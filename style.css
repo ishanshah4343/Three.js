@@ -1,0 +1,9 @@
+body{
+  margin: 0;
+}
+
+#content{
+  text-align: center;
+  font-size: 150%;
+  background: rgba(0,0,0,0.5);
+}
