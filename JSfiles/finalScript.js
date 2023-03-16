@@ -24,6 +24,7 @@ import {sky} from './sky.js'
 const renderer = new THREE.WebGLRenderer({ antialias: true,alpha : true });
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.shadowMap.enabled =true;
+console.log(renderer.shadowMap)
 renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
@@ -60,7 +61,7 @@ directionalLight.castShadow = true;
 directionalLight.target.position.set(0,0,0)
 directionalLight.shadow.mapSize = new THREE.Vector2(1024 * 2, 1024 * 2);
 
-
+console.log(directionalLight.shadow)
 directionalLight.shadow.camera.left = -100;
 directionalLight.shadow.camera.right = 100;
 directionalLight.shadow.camera.top = 100;
@@ -316,6 +317,18 @@ window.addEventListener('dblclick', () => {
    
     
 })
+window.addEventListener('keypress', (event) => {
+    if(event.key == 'r')
+    {
+        scene.remove(camera)
+        cubeo.add(camera)
+        camera.position.set(50,50,50)
+        camera.lookAt(0,0,0)
+        camera.updateProjectionMatrix();
+    }
+    
+})
+
 
 let plist1 = [];
 let plist2 = [];
@@ -367,6 +380,7 @@ if(scene.children.length>10)
 rayCaster.set(camera.position,rayInt);
 const intersects = rayCaster.intersectObjects(scene.children[39].children);
 document.querySelector("#content").textContent = "Loaded -- DOUBLE CLICK TO ENTER THE BUILDING";
+console.log(scene.children[39].children[5].shadow)
 
 //console.log(scene.children[39].children[10].visible)
 //console.log(scene.children[41].children)
@@ -389,7 +403,7 @@ else if (intersects.length !== 0)
         vec.x = camera.position.x
         vec.z = camera.position.z
         vec.y = intersects[0].point.y + 1.75
-        camera.position.lerp(vec,0.05);
+        camera.position.lerp(vec,0.5);
         orbit.update(0.05); 
         
         
@@ -409,7 +423,7 @@ else if (intersects.length !== 0)
     }
     if(camera.position.y<5 &&camera.position.x>-24)
     {
-        hlight.intensity = 0.01
+        hlight.intensity = 0.02
     }
     else if(camera.position.y<5 &&camera.position.x>5)
     {
@@ -422,7 +436,7 @@ else if (intersects.length !== 0)
 
 }
 }
-console.log(camera.position)
+//console.log(camera.position)
 directionalLight.position.x = directionalLight.position.z +Math.PI
 
 renderer.render( scene, camera );
