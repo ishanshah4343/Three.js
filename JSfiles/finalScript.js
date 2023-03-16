@@ -9,7 +9,7 @@ import { IndoorControls } from '../Modules/IndoorControls.js';
 
 //Import Internal Files
 import {stepsTexture,groundTexture,roomsTexture,blackmarbleTexture,outerwallTexture,floorPlateTexture,sandTexture,concreteshellTexture} from '../JSfiles/material.js'
-import { RDModel } from './modelLoader.js';
+import { RDModel } from '/modelLoader.js';
 import {sky} from '/sky.js'
 
 
