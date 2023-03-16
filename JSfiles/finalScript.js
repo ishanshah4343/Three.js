@@ -10,7 +10,7 @@ import { IndoorControls } from '../Modules/IndoorControls.js';
 //Import Internal Files
 import {stepsTexture,groundTexture,roomsTexture,blackmarbleTexture,outerwallTexture,floorPlateTexture,sandTexture,concreteshellTexture} from '../JSfiles/material.js'
 import { RDModel } from './modelLoader.js';
-import {sky} from './sky.js'
+import {sky} from '/sky.js'
 
 
 
@@ -267,7 +267,7 @@ const rayInt = new THREE.Vector3(0,-1,0);
 //Adding Model
 let rhinoModel;
 let koko;
-let model = '../3dmodels/UNDERGROUND01.3dm';
+let model = './3dmodels/UNDERGROUND01.3dm';
 rhinoModel = new RDModel();
 koko = rhinoModel.createModel(model,scene,textureList);
 
